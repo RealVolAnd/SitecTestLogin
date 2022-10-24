@@ -8,6 +8,6 @@ import io.reactivex.Observable
 import retrofit2.Response
 
 interface LocalRepo {
-    suspend fun getLog(): Observable<List<LogItem>>
+    fun getLog(): Observable<List<LogItem>>
     suspend fun insertItem(logItem: LogItem)
 }

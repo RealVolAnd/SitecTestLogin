@@ -6,12 +6,17 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.test.sitec.sitectestlogin.R
 import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
 import com.test.sitec.sitectestlogin.common.ERROR_LOGIN_FAILED
+import com.test.sitec.sitectestlogin.common.LOG_MESSAGE_TYPE_ERROR
+import com.test.sitec.sitectestlogin.common.LOG_MESSAGE_TYPE_SUCCESS
 import com.test.sitec.sitectestlogin.common.utils.AlertUtils
+import com.test.sitec.sitectestlogin.common.utils.DateUtils
+import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
 import com.test.sitec.sitectestlogin.data.datasources.network.models.requests.SignInRequest
 import com.test.sitec.sitectestlogin.databinding.FragmentSignInBinding
 import com.test.sitec.sitectestlogin.presentation.models.User
@@ -21,9 +26,21 @@ class SignInFragment : BaseFragment() {
     private var _vb: FragmentSignInBinding? = null
     private val vb get() = _vb!!
     private val viewModel: SignInViewModel by viewModels()
-    private lateinit var usersAdapter: BindableSpinnerAdapter
+    private lateinit var usersAdapter: SpinnerAdapter
     private var isFieldsValid = false
-    private var currentUid = ""
+    private lateinit var currentUser:User
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    doNothing()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +66,7 @@ class SignInFragment : BaseFragment() {
     override fun setViews() {
         vb.signInUserName.setOnItemClickListener() { parent, _, position, id ->
             val selectedUser = parent.adapter.getItem(position) as User?
-            currentUid = selectedUser!!.testUserUid
+            currentUser = selectedUser!!
         }
         vb.signInConfirmBtn.isEnabled = false
         vb.signInUserName.addTextChangedListener(object : TextWatcher {
@@ -91,7 +108,7 @@ class SignInFragment : BaseFragment() {
     private fun tryToSignIn() {
         viewModel.signIn(
             SignInRequest(
-                currentUid,
+                currentUser.testUserUid,
                 vb.signInPassword.text.toString(),
                 false,
                 ""
@@ -102,11 +119,23 @@ class SignInFragment : BaseFragment() {
     private fun renderData(appState: SignInLiveData) {
         when (appState) {
             is SignInLiveData.Loading -> {
+
+            }
+            is SignInLiveData.SuccessInsertLogItem -> {
+                goToLogScreen()
             }
             is SignInLiveData.Success -> {
                 when(appState.response.code){
-                    1022 -> showLoginErrorDialog(ERROR_LOGIN_FAILED)
-                    else -> goToLogScreen()
+                    1022 -> {
+                        showLoginErrorDialog(ERROR_LOGIN_FAILED)
+                        insertErrorItemToTheLog()
+
+                    }
+
+                    else -> {
+                        insertSuccessItemToTheLog()
+                        goToLogScreen()
+                    }
                 }
             }
             is SignInLiveData.Error -> {
@@ -115,9 +144,23 @@ class SignInFragment : BaseFragment() {
         }
     }
 
+    private fun insertErrorItemToTheLog(){
+        viewModel.insertLogItem(LogItem(0,
+            DateUtils().getCurrentDateTimeString(),
+            LOG_MESSAGE_TYPE_ERROR,
+            "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"))
+    }
+
+    private fun insertSuccessItemToTheLog(){
+        viewModel.insertLogItem(LogItem(0,
+            DateUtils().getCurrentDateTimeString(),
+            LOG_MESSAGE_TYPE_SUCCESS,
+            "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"))
+    }
+
     private fun fillUsersList(usersList: ArrayList<User>) {
         usersAdapter =
-            BindableSpinnerAdapter(requireContext(), android.R.layout.simple_list_item_1, usersList)
+            SpinnerAdapter(requireContext(), android.R.layout.simple_list_item_1, usersList)
         usersAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         vb.signInUserName.setAdapter(usersAdapter)
     }

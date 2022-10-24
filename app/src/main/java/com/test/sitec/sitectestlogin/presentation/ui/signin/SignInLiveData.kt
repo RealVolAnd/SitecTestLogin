@@ -6,5 +6,6 @@ import com.test.sitec.sitectestlogin.presentation.models.UsersList
 sealed class SignInLiveData {
     object Loading : SignInLiveData()
     data class Success(val response: SignInResponse) : SignInLiveData()
+    data class SuccessInsertLogItem(val result: Int) : SignInLiveData()
     data class Error(val error: String) : SignInLiveData()
 }

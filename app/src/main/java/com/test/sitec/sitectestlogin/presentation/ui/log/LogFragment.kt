@@ -1,28 +1,23 @@
 package com.test.sitec.sitectestlogin.presentation.ui.log
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.test.sitec.sitectestlogin.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
 import com.test.sitec.sitectestlogin.common.utils.AlertUtils
+import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
 import com.test.sitec.sitectestlogin.databinding.FragmentLogBinding
-import com.test.sitec.sitectestlogin.databinding.FragmentSplashBinding
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
-import com.test.sitec.sitectestlogin.presentation.ui.splash.SplashLiveData
-import com.test.sitec.sitectestlogin.presentation.ui.splash.SplashViewModel
 
-class LogFragment: BaseFragment(), LogContract.View {
+class LogFragment : BaseFragment(), LogContract.View {
 
     private var _vb: FragmentLogBinding? = null
     private val vb get() = _vb!!
     private lateinit var presenter: LogContract.Presenter
+    private lateinit var itemsAdapter: LogAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,26 +44,40 @@ class LogFragment: BaseFragment(), LogContract.View {
         super.onViewCreated(view, savedInstanceState)
         setClickListeners()
         presenter = LogPresenter(this)
+        presenter.getLog()
     }
 
-    override fun setViews() {}
+    override fun setViews() {
+        vb.logRv.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        itemsAdapter = LogAdapter()
+        vb.logRv.adapter = itemsAdapter
+    }
 
     override fun setClickListeners() {}
 
     override fun onClick(p0: View?) {}
 
-    fun showErrorDialog(message: String) {
+    override fun showErrorDialog(message: String) {
         AlertUtils().showAlertDialog(
             requireContext(),
             ALERT_DIALOG_TYPE_ERROR,
             message,
             "Reply", "Close App", {
 
-            }, {  }
+            }, { }
         )
     }
+
+    override fun onLogReceived(logItemsList: List<LogItem>) {
+        itemsAdapter.setList(logItemsList)
+    }
+
+
 
     companion object {
         fun newInstance() = LogFragment()
     }
+
+
 }

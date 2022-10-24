@@ -1,21 +1,13 @@
 package com.test.sitec.sitectestlogin.presentation.ui.signin
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
-import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
-import androidx.databinding.InverseBindingListener
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.test.sitec.sitectestlogin.presentation.models.User
-import com.test.sitec.sitectestlogin.presentation.models.UsersList
 
-class BindableSpinnerAdapter (context: Context, private val textViewResourceId: Int, private val values: ArrayList<User>) :
+class SpinnerAdapter (context: Context, private val textViewResourceId: Int, private val values: ArrayList<User>) :
     ArrayAdapter<User>(context, textViewResourceId, values) {
 
     override fun getCount() = values.size

@@ -6,15 +6,15 @@ import io.reactivex.Observable
 
 @Dao
 interface LogDao {
-    @Query("SELECT * FROM logitems")
-    suspend fun getLog(): Observable<List<LogItem>>
+    @Query("SELECT * FROM logitems ORDER BY id DESC")
+    fun getLog(): Observable<List<LogItem>>
 
     @Insert
     suspend fun insert(appLog: LogItem)
 
     @Update
-    suspend fun update(appLog: LogItem)
+    fun update(appLog: LogItem)
 
     @Delete
-    suspend fun delete(appLog: LogItem)
+    fun delete(appLog: LogItem)
 }

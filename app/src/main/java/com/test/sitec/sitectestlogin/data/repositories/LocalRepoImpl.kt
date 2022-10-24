@@ -8,7 +8,7 @@ import io.reactivex.Observable
 class LocalRepoImpl: LocalRepo {
     private val dbDataSource = App.db
 
-    override suspend fun getLog(): Observable<List<LogItem>> {
+    override  fun getLog(): Observable<List<LogItem>> {
         return dbDataSource.logDao.getLog()
     }
 

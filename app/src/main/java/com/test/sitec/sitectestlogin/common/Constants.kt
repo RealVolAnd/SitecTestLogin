@@ -28,3 +28,7 @@ val ERROR_GENERAL = App.instance.getString(R.string.s_w_w)
 val ERROR_NO_NETWORK = App.instance.getString(R.string.no_network_error)
 val ERROR_NO_DATA = App.instance.getString(R.string.server_return_empty_set)
 val ERROR_LOGIN_FAILED = "Login failed"
+
+//Results
+val RESULT_OK = 0
+val RESULT_FAILED = 1

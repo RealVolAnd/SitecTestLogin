@@ -19,15 +19,15 @@ val LOG_MESSAGE_TYPE_ERROR = 2
 val SP_DEVICE_UUID = "device_uuid"
 
 //Alert dialog types
-val ALERT_DIALOG_TYPE_ERROR  =1
-val ALERT_DIALOG_TYPE_WARN  = 2
-val ALERT_DIALOG_TYPE_INFO  = 3
+val ALERT_DIALOG_TYPE_ERROR = 1
+val ALERT_DIALOG_TYPE_WARN = 2
+val ALERT_DIALOG_TYPE_INFO = 3
 
 //Errors
 val ERROR_GENERAL = App.instance.getString(R.string.s_w_w)
 val ERROR_NO_NETWORK = App.instance.getString(R.string.no_network_error)
 val ERROR_NO_DATA = App.instance.getString(R.string.server_return_empty_set)
-val ERROR_LOGIN_FAILED = "Login failed"
+val ERROR_LOGIN_FAILED = App.instance.getString(R.string.login_failed)
 
 //Results
 val RESULT_OK = 0

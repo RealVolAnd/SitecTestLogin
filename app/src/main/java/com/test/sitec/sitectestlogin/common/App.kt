@@ -6,8 +6,10 @@ import android.net.ConnectivityManager
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.test.sitec.sitectestlogin.data.datasources.db.services.TestDatabase
+import dagger.hilt.android.HiltAndroidApp
 
-class App: Application() {
+@HiltAndroidApp
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this

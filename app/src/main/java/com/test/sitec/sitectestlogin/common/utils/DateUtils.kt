@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DateUtils {
-    fun getCurrentDateTimeString(): String{
+    fun getCurrentDateTimeString(): String {
         val df: DateFormat = SimpleDateFormat("HH:mm dd-MM-yyyy")
         return df.format(Date(System.currentTimeMillis()))
     }

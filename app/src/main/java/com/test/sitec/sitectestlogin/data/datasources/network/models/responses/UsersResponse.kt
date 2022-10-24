@@ -13,7 +13,7 @@ data class TestUsersList(
 )
 
 data class TestUser(
-@SerializedName("User") val testUser: String,
-@SerializedName("Uid") val testUserUid: String,
-@SerializedName("Language") val testUserLang: String
+    @SerializedName("User") val testUser: String,
+    @SerializedName("Uid") val testUserUid: String,
+    @SerializedName("Language") val testUserLang: String
 )

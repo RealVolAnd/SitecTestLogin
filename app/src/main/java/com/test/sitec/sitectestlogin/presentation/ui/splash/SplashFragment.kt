@@ -12,8 +12,9 @@ import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
 import com.test.sitec.sitectestlogin.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.databinding.FragmentSplashBinding
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SplashFragment : BaseFragment() {
 
     companion object {
@@ -71,7 +72,7 @@ class SplashFragment : BaseFragment() {
             is SplashLiveData.Loading -> {
             }
             is SplashLiveData.Success -> {
-               goToSignInScreen()
+                goToSignInScreen()
             }
             is SplashLiveData.Error -> {
                 showErrorDialog(appState.error)
@@ -79,7 +80,7 @@ class SplashFragment : BaseFragment() {
         }
     }
 
-   fun showErrorDialog(message: String) {
+    fun showErrorDialog(message: String) {
         AlertUtils().showAlertDialog(
             requireContext(),
             ALERT_DIALOG_TYPE_ERROR,

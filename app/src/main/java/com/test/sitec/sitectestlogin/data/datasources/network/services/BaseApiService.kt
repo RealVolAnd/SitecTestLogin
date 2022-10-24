@@ -1,13 +1,9 @@
 package com.test.sitec.sitectestlogin.data.datasources.network.services
 
-import android.content.Context
-import android.net.ConnectivityManager
 import com.google.gson.GsonBuilder
 import com.test.sitec.sitectestlogin.common.API_BASE_URL
 import com.test.sitec.sitectestlogin.common.API_PASSWORD
 import com.test.sitec.sitectestlogin.common.API_USER_NAME
-import com.test.sitec.sitectestlogin.common.App
-import com.test.sitec.sitectestlogin.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.data.datasources.network.interfaces.BaseApiInterface
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor

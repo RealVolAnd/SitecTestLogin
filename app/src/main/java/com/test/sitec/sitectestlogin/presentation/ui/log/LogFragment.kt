@@ -11,7 +11,9 @@ import com.test.sitec.sitectestlogin.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
 import com.test.sitec.sitectestlogin.databinding.FragmentLogBinding
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LogFragment : BaseFragment(), LogContract.View {
 
     private var _vb: FragmentLogBinding? = null
@@ -72,7 +74,6 @@ class LogFragment : BaseFragment(), LogContract.View {
     override fun onLogReceived(logItemsList: List<LogItem>) {
         itemsAdapter.setList(logItemsList)
     }
-
 
 
     companion object {

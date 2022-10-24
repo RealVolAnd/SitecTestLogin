@@ -79,17 +79,22 @@ class AlertUtils {
         }
     }
 
-    fun showSystemMessage(view: View,
-                          message: String, type: Int){
+    fun showSystemMessage(
+        view: View,
+        message: String, type: Int
+    ) {
         val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
 
-        when(type){
-            ALERT_DIALOG_TYPE_ERROR ->  snackbar.view.backgroundTintList = ColorStateList.valueOf(
-                Color.parseColor("#d42424"))
-            ALERT_DIALOG_TYPE_WARN ->  snackbar.view.backgroundTintList = ColorStateList.valueOf(
-                Color.parseColor("#DC8401"))
-            ALERT_DIALOG_TYPE_INFO ->  snackbar.view.backgroundTintList = ColorStateList.valueOf(
-                Color.parseColor("#067B6D"))
+        when (type) {
+            ALERT_DIALOG_TYPE_ERROR -> snackbar.view.backgroundTintList = ColorStateList.valueOf(
+                Color.parseColor("#d42424")
+            )
+            ALERT_DIALOG_TYPE_WARN -> snackbar.view.backgroundTintList = ColorStateList.valueOf(
+                Color.parseColor("#DC8401")
+            )
+            ALERT_DIALOG_TYPE_INFO -> snackbar.view.backgroundTintList = ColorStateList.valueOf(
+                Color.parseColor("#067B6D")
+            )
         }
 
         snackbar.view.alpha = 0.5f

@@ -7,7 +7,11 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.test.sitec.sitectestlogin.presentation.models.User
 
-class SpinnerAdapter (context: Context, private val textViewResourceId: Int, private val values: ArrayList<User>) :
+class SpinnerAdapter(
+    context: Context,
+    private val textViewResourceId: Int,
+    private val values: ArrayList<User>
+) :
     ArrayAdapter<User>(context, textViewResourceId, values) {
 
     override fun getCount() = values.size
@@ -16,7 +20,7 @@ class SpinnerAdapter (context: Context, private val textViewResourceId: Int, pri
 
     override fun getItemId(position: Int) = position.toLong()
 
-    override fun getView( position: Int, convertView: View?, parent: ViewGroup): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val label = super.getView(position, convertView, parent) as TextView
         label.text = values[position].testUser
         return label
@@ -27,7 +31,6 @@ class SpinnerAdapter (context: Context, private val textViewResourceId: Int, pri
         label.text = values[position].testUser
         return label
     }
-
 
 
 } // BindableSpinnerAdapter class

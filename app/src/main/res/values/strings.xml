@@ -7,4 +7,7 @@
     <string name="no_network_error">No network connection</string>
     <string name="server_return_empty_set">Server return empty set</string>
     <string name="sign_in">Sign In</string>
+    <string name="select_user">Select user</string>
+    <string name="password">Password</string>
+    <string name="login_failed">Login failed</string>
 </resources>

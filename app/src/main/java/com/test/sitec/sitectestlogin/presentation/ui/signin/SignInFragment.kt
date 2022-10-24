@@ -1,12 +1,15 @@
 package com.test.sitec.sitectestlogin.presentation.ui.signin
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.test.sitec.sitectestlogin.R
@@ -21,14 +24,16 @@ import com.test.sitec.sitectestlogin.data.datasources.network.models.requests.Si
 import com.test.sitec.sitectestlogin.databinding.FragmentSignInBinding
 import com.test.sitec.sitectestlogin.presentation.models.User
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInFragment : BaseFragment() {
     private var _vb: FragmentSignInBinding? = null
     private val vb get() = _vb!!
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var usersAdapter: SpinnerAdapter
     private var isFieldsValid = false
-    private lateinit var currentUser:User
+    private lateinit var currentUser: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,7 +105,10 @@ class SignInFragment : BaseFragment() {
     override fun onClick(p0: View?) {
         if (p0 != null) {
             when (p0.id) {
-                vb.signInConfirmBtn.id -> tryToSignIn()
+                vb.signInConfirmBtn.id -> {
+                    p0.hideKeyboard()
+                    tryToSignIn()
+                }
             }
         }
     }
@@ -122,14 +130,13 @@ class SignInFragment : BaseFragment() {
 
             }
             is SignInLiveData.SuccessInsertLogItem -> {
-                goToLogScreen()
+
             }
             is SignInLiveData.Success -> {
-                when(appState.response.code){
+                when (appState.response.code) {
                     1022 -> {
-                        showLoginErrorDialog(ERROR_LOGIN_FAILED)
+                        showLoginErrorDialog()
                         insertErrorItemToTheLog()
-
                     }
 
                     else -> {
@@ -144,18 +151,26 @@ class SignInFragment : BaseFragment() {
         }
     }
 
-    private fun insertErrorItemToTheLog(){
-        viewModel.insertLogItem(LogItem(0,
-            DateUtils().getCurrentDateTimeString(),
-            LOG_MESSAGE_TYPE_ERROR,
-            "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"))
+    private fun insertErrorItemToTheLog() {
+        viewModel.insertLogItem(
+            LogItem(
+                0,
+                DateUtils().getCurrentDateTimeString(),
+                LOG_MESSAGE_TYPE_ERROR,
+                "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"
+            )
+        )
     }
 
-    private fun insertSuccessItemToTheLog(){
-        viewModel.insertLogItem(LogItem(0,
-            DateUtils().getCurrentDateTimeString(),
-            LOG_MESSAGE_TYPE_SUCCESS,
-            "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"))
+    private fun insertSuccessItemToTheLog() {
+        viewModel.insertLogItem(
+            LogItem(
+                0,
+                DateUtils().getCurrentDateTimeString(),
+                LOG_MESSAGE_TYPE_SUCCESS,
+                "User: ${currentUser.testUser}, Password: ${vb.signInPassword.text}, UID: ${currentUser.testUserUid}"
+            )
+        )
     }
 
     private fun fillUsersList(usersList: ArrayList<User>) {
@@ -176,22 +191,16 @@ class SignInFragment : BaseFragment() {
         )
     }
 
-    fun showLoginErrorDialog(message: String) {
-        AlertUtils().showAlertDialog(
-            requireContext(),
-            ALERT_DIALOG_TYPE_ERROR,
-            message,
-            "Ok", "", {
-
-            }, {}
-        )
+    fun showLoginErrorDialog() {
+        AlertUtils().showSystemMessage(vb.signInRoot,
+            ERROR_LOGIN_FAILED,
+            ALERT_DIALOG_TYPE_ERROR)
     }
 
     private fun setConfirmButtonState() {
         vb.signInConfirmBtn.isEnabled =
             vb.signInUserName.text.isNotEmpty() && vb.signInPassword.text!!.isNotEmpty()
     }
-
 
     private fun goToLogScreen() {
         findNavController().navigate(R.id.action_signInFragment_to_logFragment)
@@ -200,4 +209,8 @@ class SignInFragment : BaseFragment() {
     companion object {
         fun newInstance() = SignInFragment()
     }
+}
+fun View.hideKeyboard() {
+    val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputManager.hideSoftInputFromWindow(windowToken, 0)
 }

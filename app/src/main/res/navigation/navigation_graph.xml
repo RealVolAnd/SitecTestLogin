@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.test.sitec.sitectestlogin.presentation.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/fade_in_long"
+            app:exitAnim="@anim/fade_out_long" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.test.sitec.sitectestlogin.presentation.ui.signin.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_logFragment"
+            app:destination="@id/logFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logFragment"
+        android:name="com.test.sitec.sitectestlogin.presentation.ui.log.LogFragment"
+        android:label="fragment_log"
+        tools:layout="@layout/fragment_log" />
+</navigation>

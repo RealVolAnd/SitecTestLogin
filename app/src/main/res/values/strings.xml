@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SitecTestLogin</string>
+    <string name="error">Error</string>
+    <string name="warning">Warning</string>
+    <string name="info">Info</string>
+    <string name="s_w_w">Something went wrong</string>
+    <string name="no_network_error">No network connection</string>
+    <string name="server_return_empty_set">Server return empty set</string>
+    <string name="sign_in">Sign In</string>
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_smallest">2dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_medium_plus">16dp</dimen>
+    <dimen name="padding_big">24dp</dimen>
+    <dimen name="padding_bigest">36dp</dimen>
+
+    <dimen name="margin_smallest">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_medium_plus">24dp</dimen>
+    <dimen name="margin_big">32dp</dimen>
+    <dimen name="margin_bigest">40dp</dimen>
+
+
+    <dimen name="elevation_smallest">1dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_medium">5dp</dimen>
+    <dimen name="elevation_medium_plus">10dp</dimen>
+    <dimen name="elevation_big">20dp</dimen>
+    <dimen name="elevation_bigest">100dp</dimen>
+
+    <dimen name="text_size_smallest">8sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_medium_plus">16sp</dimen>
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_bigest">28sp</dimen>
+    <dimen name="button_elevation_normal">4dp</dimen>
+    <dimen name="button_elevation_pressed">1dp</dimen>
+    <dimen name="button_text_elevation">5dp</dimen>
+    <dimen name="button_text_padding">12dp</dimen>
+
+</resources>

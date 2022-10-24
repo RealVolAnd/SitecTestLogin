@@ -1,0 +1,9 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true"
+        android:state_pressed="true"
+        android:drawable="@drawable/btn_295_active"
+        />
+    <item android:state_enabled="true" android:drawable="@drawable/btn_295_active"/>
+    <item android:state_enabled="false" android:drawable="@drawable/btn_295_disable"/>
+    <item android:drawable="@drawable/btn_295_disable"/>
+</selector>

@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/text_color_hint" android:state_focused="true"/>
+    <item android:alpha="0.87" android:color="@color/text_color_hint" android:state_hovered="true"/>
+    <item android:color="@color/text_color_hint" android:state_enabled="false"/>
+    <item android:color="@color/text_color_hint"/> <!--unfocused-->
+</selector>

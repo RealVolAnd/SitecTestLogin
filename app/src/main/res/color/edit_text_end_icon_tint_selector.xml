@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/main_gradient_color_full_2" android:state_activated="true"/>
+    <item android:color="@color/main_gradient_color_full_2" android:state_enabled="false"/>
+    <item android:color="@color/main_gradient_color_full_2"/>
+</selector>

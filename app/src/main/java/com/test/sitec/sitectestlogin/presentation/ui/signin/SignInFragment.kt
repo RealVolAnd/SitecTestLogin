@@ -199,7 +199,7 @@ class SignInFragment : BaseFragment() {
 
     private fun setConfirmButtonState() {
         vb.signInConfirmBtn.isEnabled =
-            vb.signInUserName.text.isNotEmpty() && vb.signInPassword.text!!.isNotEmpty()
+            vb.signInUserName.text.isNotEmpty()
     }
 
     private fun goToLogScreen() {

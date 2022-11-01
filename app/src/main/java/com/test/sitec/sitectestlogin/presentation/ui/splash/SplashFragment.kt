@@ -62,9 +62,13 @@ class SplashFragment : BaseFragment() {
     }
 
     override fun setClickListeners() {
+        vb.splashConfirmBtn.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
+        when(p0!!.id){
+            vb.splashConfirmBtn.id -> goToSignInScreen()
+        }
     }
 
     private fun renderData(appState: SplashLiveData) {
@@ -72,12 +76,17 @@ class SplashFragment : BaseFragment() {
             is SplashLiveData.Loading -> {
             }
             is SplashLiveData.Success -> {
-                goToSignInScreen()
+                showButton()
             }
             is SplashLiveData.Error -> {
                 showErrorDialog(appState.error)
             }
         }
+    }
+
+    private fun showButton(){
+        vb.splashLoadingLayout.visibility = View.GONE
+        vb.splashButtonsLayout.visibility = View.VISIBLE
     }
 
     fun showErrorDialog(message: String) {

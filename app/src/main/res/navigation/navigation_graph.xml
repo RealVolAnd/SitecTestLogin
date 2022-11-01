@@ -13,8 +13,8 @@
         <action
             android:id="@+id/action_splashFragment_to_signInFragment"
             app:destination="@id/signInFragment"
-            app:enterAnim="@anim/fade_in_long"
-            app:exitAnim="@anim/fade_out_long" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"

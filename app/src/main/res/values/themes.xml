@@ -62,4 +62,30 @@
         <item name="android:elevation">@dimen/button_elevation_normal</item>
     </style>
     <!--TEXT VIEW BUTTON APEARANCE - END -->
+
+    <!--TEXT APEARANCE - START -->
+    <style name="TitleTextStyleLight">
+        <item name="android:textSize">@dimen/text_size_bigest</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">@dimen/button_elevation_normal</item>
+    </style>
+
+    <style name="CommonTextStyleLight">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">start</item>
+        <item name="android:elevation">@dimen/button_elevation_normal</item>
+    </style>
+
+    <style name="SubtitleTextStyleLight">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">start</item>
+        <item name="android:elevation">@dimen/button_elevation_normal</item>
+    </style>
+    <!--TEXT  APEARANCE - END -->
 </resources>

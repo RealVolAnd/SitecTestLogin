@@ -6,4 +6,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_backgroung"
-    tools:context=".presentation.ui.splash.SplashFragment"/>
+    android:elevation="@dimen/elevation_medium"
+    android:padding="@dimen/padding_bigest"
+    tools:context=".presentation.ui.splash.SplashFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splash_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splash_container_shape"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/splash_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/this_application_makes_with_using_next_tecnology_stack_n_n_mvp_mvvm_n_retrofit_gson_okhttp_n_coroutines_rxjava_n_room_n_jetpack_navigation_view_binding"
+            android:theme="@style/CommonTextStyleLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_banner" />
+
+        <TextView
+            android:id="@+id/splash_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_medium"
+            android:text="@string/testlogin"
+            android:theme="@style/TitleTextStyleLight"
+            app:layout_constraintBottom_toBottomOf="@+id/splash_banner"
+            app:layout_constraintEnd_toEndOf="@+id/splash_banner"
+            app:layout_constraintStart_toStartOf="@+id/splash_banner"
+            app:layout_constraintTop_toTopOf="@+id/splash_banner" />
+
+        <TextView
+            android:id="@+id/splash_sub_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/the_functionality_of_the_application_is_presented_exclusively_in_accordance_with_the_requirements_of_the_task_so_some_expected_features_may_be_missing"
+            android:theme="@style/SubtitleTextStyleLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_text" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/splash_banner"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/splash_action_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/splash_action_layout_height"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_sub_text">
+
+            <LinearLayout
+                android:id="@+id/splash_loading_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:elevation="@dimen/elevation_medium"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/splash_loading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:fontFamily="@font/outfit_light"
+                    android:text="@string/initialization"
+                    android:textSize="16sp"
+                    android:theme="@style/CommonTextStyleLight" />
+
+                <ProgressBar
+                    android:id="@+id/splash_loading_pb"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/splash_progress_bar_width"
+                    android:layout_height="@dimen/splash_progress_bar_height"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:clickable="false"
+                    android:indeterminate="true"
+                    android:indeterminateDrawable="@drawable/progress_bar_drawable"
+                    android:indeterminateDuration="1500" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/splash_buttons_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:clipToPadding="false"
+                android:elevation="@dimen/elevation_medium"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/splash_confirm_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_shape"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/confirm_button_selector"
+                    android:theme="@style/ImageButtonsStyleDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/splash_confirm_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_continue"
+                    android:theme="@style/ButtonTextStyleDark"
+                    app:layout_constraintBottom_toBottomOf="@+id/splash_confirm_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/splash_confirm_btn"
+                    app:layout_constraintStart_toStartOf="@+id/splash_confirm_btn"
+                    app:layout_constraintTop_toTopOf="@+id/splash_confirm_btn" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

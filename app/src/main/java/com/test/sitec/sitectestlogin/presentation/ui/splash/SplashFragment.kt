@@ -94,7 +94,7 @@ class SplashFragment : BaseFragment() {
             requireContext(),
             ALERT_DIALOG_TYPE_ERROR,
             message,
-            "Reply", "Close App", {
+            getString(R.string.reply_text), getString(R.string.close_app_text), {
                 viewModel.getUsers()
             }, { requireActivity().finish() }
         )

@@ -15,4 +15,6 @@
     <string name="action_continue">Ok, I\'m understand</string>
     <string name="the_functionality_of_the_application_is_presented_exclusively_in_accordance_with_the_requirements_of_the_task_so_some_expected_features_may_be_missing">The functionality of the application is presented exclusively in accordance with the requirements of the task. So some expected features may be missing</string>
     <string name="this_application_makes_with_using_next_tecnology_stack_n_n_mvp_mvvm_n_retrofit_gson_okhttp_n_coroutines_rxjava_n_room_n_jetpack_navigation_view_binding">This Application makes with using next tecnology stack:\n\n- MVP,MVVM\n- Retrofit, Gson, OkHTTP\n- Coroutines, RxJava\n- Room\n- Jetpack Navigation, View Binding\n- Hilt</string>
+    <string name="reply_text">Reply</string>
+    <string name="close_app_text">Close App</string>
 </resources>

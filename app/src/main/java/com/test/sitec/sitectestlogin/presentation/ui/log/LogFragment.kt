@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
-import com.test.sitec.sitectestlogin.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
 import com.test.sitec.sitectestlogin.databinding.FragmentLogBinding
+import com.test.sitec.sitectestlogin.domain.common.ALERT_DIALOG_TYPE_ERROR
+import com.test.sitec.sitectestlogin.domain.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,8 +1,7 @@
-package com.test.sitec.sitectestlogin.common.di
+package com.test.sitec.sitectestlogin.presentation.di
 
 import androidx.lifecycle.MutableLiveData
 import com.test.sitec.sitectestlogin.presentation.models.User
-import com.test.sitec.sitectestlogin.presentation.ui.signin.UserListLiveData
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

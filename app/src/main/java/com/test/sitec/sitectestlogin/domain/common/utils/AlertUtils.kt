@@ -1,4 +1,4 @@
-package com.test.sitec.sitectestlogin.common.utils
+package com.test.sitec.sitectestlogin.domain.common.utils
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -10,10 +10,10 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.test.sitec.sitectestlogin.R
-import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
-import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_INFO
-import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_WARN
 import com.test.sitec.sitectestlogin.databinding.DialogAlertBinding
+import com.test.sitec.sitectestlogin.domain.common.ALERT_DIALOG_TYPE_ERROR
+import com.test.sitec.sitectestlogin.domain.common.ALERT_DIALOG_TYPE_INFO
+import com.test.sitec.sitectestlogin.domain.common.ALERT_DIALOG_TYPE_WARN
 
 class AlertUtils {
     fun showAlertDialog(

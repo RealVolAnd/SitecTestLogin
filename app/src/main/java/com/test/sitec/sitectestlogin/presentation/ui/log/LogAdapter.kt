@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.test.sitec.sitectestlogin.R
-import com.test.sitec.sitectestlogin.common.LOG_MESSAGE_TYPE_ERROR
-import com.test.sitec.sitectestlogin.common.LOG_MESSAGE_TYPE_SUCCESS
 import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
 import com.test.sitec.sitectestlogin.databinding.LogItemBinding
+import com.test.sitec.sitectestlogin.domain.common.LOG_MESSAGE_TYPE_ERROR
+import com.test.sitec.sitectestlogin.domain.common.LOG_MESSAGE_TYPE_SUCCESS
 
 class LogAdapter : RecyclerView.Adapter<LogAdapter.ItemsViewHolder>() {
     var cards = arrayListOf<LogItem>()

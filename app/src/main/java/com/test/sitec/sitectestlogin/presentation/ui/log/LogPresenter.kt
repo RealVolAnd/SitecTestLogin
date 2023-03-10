@@ -1,6 +1,6 @@
 package com.test.sitec.sitectestlogin.presentation.ui.log
 
-import com.test.sitec.sitectestlogin.common.ERROR_NO_DATA
+import com.test.sitec.sitectestlogin.domain.common.ERROR_NO_DATA_TEXT
 import com.test.sitec.sitectestlogin.domain.usecases.LocalUseCases
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -17,7 +17,7 @@ class LogPresenter(private val view: LogContract.View) : LogContract.Presenter {
                     view.onLogReceived(it)
                 },
                 onError = {
-                    view.showErrorDialog(ERROR_NO_DATA)
+                    view.showErrorDialog(ERROR_NO_DATA_TEXT)
                 }
             )
     }

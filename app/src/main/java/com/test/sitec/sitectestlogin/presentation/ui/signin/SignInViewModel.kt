@@ -3,11 +3,12 @@ package com.test.sitec.sitectestlogin.presentation.ui.signin
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.sitec.sitectestlogin.common.*
-import com.test.sitec.sitectestlogin.data.datasources.db.models.LogItem
-import com.test.sitec.sitectestlogin.data.datasources.network.models.requests.SignInRequest
+import com.test.sitec.sitectestlogin.domain.common.*
+import com.test.sitec.sitectestlogin.domain.mappers.LocalDataMapper
 import com.test.sitec.sitectestlogin.domain.usecases.BaseUseCases
 import com.test.sitec.sitectestlogin.domain.usecases.LocalUseCases
+import com.test.sitec.sitectestlogin.presentation.models.ItemToLog
+import com.test.sitec.sitectestlogin.presentation.models.RequestSignIn
 import com.test.sitec.sitectestlogin.presentation.models.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -29,7 +30,7 @@ class SignInViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
     fun getUsersListLiveData() = sharedLiveData
     fun getLiveData() = liveData
 
-    fun signIn(signInRequest: SignInRequest) {
+    fun signIn(signInRequest: RequestSignIn) {
         if (App.instance.isConnected) {
             job = CoroutineScope(Dispatchers.IO).launch {
 
@@ -43,28 +44,30 @@ class SignInViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
                             )
                         } else {
                             liveData.postValue(
-                                SignInLiveData.Error(ERROR_NO_DATA)
+                                SignInLiveData.Error(ERROR_NO_DATA_TEXT)
                             )
                         }
                     } catch (e: Exception) {
                         liveData.postValue(
-                            SignInLiveData.Error(ERROR_GENERAL)
+                            SignInLiveData.Error(ERROR_GENERAL_TEXT)
                         )
                     }
                 }
             }
         } else {
             liveData.postValue(
-                SignInLiveData.Error(ERROR_NO_NETWORK)
+                SignInLiveData.Error(ERROR_NO_NETWORK_TEXT)
             )
         }
     }
 
-    fun insertLogItem(logItem: LogItem) {
+    fun insertLogItem(logItem: ItemToLog) {
         if (App.instance.isConnected) {
             job = CoroutineScope(Dispatchers.IO).launch {
 
-                val response = localUseCases.insertLogItem(logItem)
+                val response = localUseCases.insertLogItem(
+                    LocalDataMapper().fromLocalItemToLogToServerLogItem(logItem)
+                )
 
                 withContext(Dispatchers.Main) {
                     try {
@@ -73,14 +76,14 @@ class SignInViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
                         )
                     } catch (e: Exception) {
                         liveData.postValue(
-                            SignInLiveData.Error(ERROR_GENERAL)
+                            SignInLiveData.Error(ERROR_GENERAL_TEXT)
                         )
                     }
                 }
             }
         } else {
             liveData.postValue(
-                SignInLiveData.Error(ERROR_NO_NETWORK)
+                SignInLiveData.Error(ERROR_NO_NETWORK_TEXT)
             )
         }
     }

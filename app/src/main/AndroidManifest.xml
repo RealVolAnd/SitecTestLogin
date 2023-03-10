@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:name=".common.App"
+        android:name=".domain.common.App"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/test_login_icon"

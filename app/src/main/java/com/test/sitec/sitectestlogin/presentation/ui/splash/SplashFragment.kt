@@ -8,18 +8,14 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.test.sitec.sitectestlogin.R
-import com.test.sitec.sitectestlogin.common.ALERT_DIALOG_TYPE_ERROR
-import com.test.sitec.sitectestlogin.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.databinding.FragmentSplashBinding
+import com.test.sitec.sitectestlogin.domain.common.ALERT_DIALOG_TYPE_ERROR
+import com.test.sitec.sitectestlogin.domain.common.utils.AlertUtils
 import com.test.sitec.sitectestlogin.presentation.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment() {
-
-    companion object {
-        fun newInstance() = SplashFragment()
-    }
 
     private var _vb: FragmentSplashBinding? = null
     private val vb get() = _vb!!
@@ -66,7 +62,7 @@ class SplashFragment : BaseFragment() {
     }
 
     override fun onClick(p0: View?) {
-        when(p0!!.id){
+        when (p0!!.id) {
             vb.splashConfirmBtn.id -> goToSignInScreen()
         }
     }
@@ -84,12 +80,12 @@ class SplashFragment : BaseFragment() {
         }
     }
 
-    private fun showButton(){
+    private fun showButton() {
         vb.splashLoadingLayout.visibility = View.GONE
         vb.splashButtonsLayout.visibility = View.VISIBLE
     }
 
-    fun showErrorDialog(message: String) {
+    private fun showErrorDialog(message: String) {
         AlertUtils().showAlertDialog(
             requireContext(),
             ALERT_DIALOG_TYPE_ERROR,
@@ -103,5 +99,9 @@ class SplashFragment : BaseFragment() {
 
     private fun goToSignInScreen() {
         findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
+    }
+
+    companion object {
+        fun newInstance() = SplashFragment()
     }
 }

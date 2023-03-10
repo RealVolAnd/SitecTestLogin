@@ -3,8 +3,8 @@ package com.test.sitec.sitectestlogin.data.datasources.sp.services
 import android.content.Context
 import androidx.core.content.edit
 import com.test.sitec.sitectestlogin.BuildConfig
-import com.test.sitec.sitectestlogin.common.App
-import com.test.sitec.sitectestlogin.common.SP_DEVICE_UUID
+import com.test.sitec.sitectestlogin.domain.common.App
+import com.test.sitec.sitectestlogin.domain.common.SP_DEVICE_UUID
 
 class SharedPreferencesService {
     val context: Context = App.instance

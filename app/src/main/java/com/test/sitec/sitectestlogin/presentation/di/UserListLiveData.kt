@@ -1,4 +1,4 @@
-package com.test.sitec.sitectestlogin.presentation.ui.signin
+package com.test.sitec.sitectestlogin.presentation.di
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ class UserListLiveData {
 
         @MainThread
         fun get(): UserListLiveData {
-            sInstance = if (::sInstance.isInitialized) sInstance else UserListLiveData()
+            sInstance = if (Companion::sInstance.isInitialized) sInstance else UserListLiveData()
             return sInstance
         }
     }

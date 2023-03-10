@@ -1,4 +1,4 @@
-package com.test.sitec.sitectestlogin.common.utils
+package com.test.sitec.sitectestlogin.domain.common.utils
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat

@@ -9,7 +9,5 @@ abstract class BaseFragment : Fragment(), View.OnClickListener {
 
     abstract fun setClickListeners()
 
-    abstract override fun onClick(p0: View?)
-
     fun doNothing() {}
 }

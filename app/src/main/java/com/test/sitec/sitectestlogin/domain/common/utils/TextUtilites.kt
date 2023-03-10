@@ -1,4 +1,4 @@
-package com.test.sitec.sitectestlogin.common.utils
+package com.test.sitec.sitectestlogin.domain.common.utils
 
 import android.text.SpannableString
 import android.text.style.UnderlineSpan

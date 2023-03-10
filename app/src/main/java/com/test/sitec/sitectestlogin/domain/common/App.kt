@@ -1,4 +1,4 @@
-package com.test.sitec.sitectestlogin.common
+package com.test.sitec.sitectestlogin.domain.common
 
 import android.app.Application
 import android.content.Context

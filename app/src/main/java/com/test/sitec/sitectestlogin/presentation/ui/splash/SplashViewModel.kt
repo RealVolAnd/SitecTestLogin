@@ -3,12 +3,12 @@ package com.test.sitec.sitectestlogin.presentation.ui.splash
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.sitec.sitectestlogin.common.App
-import com.test.sitec.sitectestlogin.common.ERROR_GENERAL
-import com.test.sitec.sitectestlogin.common.ERROR_NO_DATA
-import com.test.sitec.sitectestlogin.common.ERROR_NO_NETWORK
+import com.test.sitec.sitectestlogin.domain.common.App
+import com.test.sitec.sitectestlogin.domain.common.ERROR_GENERAL_TEXT
+import com.test.sitec.sitectestlogin.domain.common.ERROR_NO_DATA_TEXT
+import com.test.sitec.sitectestlogin.domain.common.ERROR_NO_NETWORK_TEXT
+import com.test.sitec.sitectestlogin.domain.mappers.BaseDataMapper
 import com.test.sitec.sitectestlogin.domain.usecases.BaseUseCases
-import com.test.sitec.sitectestlogin.presentation.mappers.UserListMapper
 import com.test.sitec.sitectestlogin.presentation.models.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -37,29 +37,29 @@ class SplashViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
                         if (response.isSuccessful) {
                             liveData.postValue(
                                 SplashLiveData.Success(
-                                    UserListMapper()
+                                    BaseDataMapper()
                                         .fromServerUsersResponseToUsersList(response.body()!!)
                                 )
                             )
                             sharedLiveData.postValue(
-                                UserListMapper()
+                                BaseDataMapper()
                                     .fromServerUsersResponseToUsersList(response.body()!!).list
                             )
                         } else {
                             liveData.postValue(
-                                SplashLiveData.Error(ERROR_NO_DATA)
+                                SplashLiveData.Error(ERROR_NO_DATA_TEXT)
                             )
                         }
                     } catch (e: Exception) {
                         liveData.postValue(
-                            SplashLiveData.Error(ERROR_GENERAL)
+                            SplashLiveData.Error(ERROR_GENERAL_TEXT)
                         )
                     }
                 }
             }
         } else {
             liveData.postValue(
-                SplashLiveData.Error(ERROR_NO_NETWORK)
+                SplashLiveData.Error(ERROR_NO_NETWORK_TEXT)
             )
         }
     }

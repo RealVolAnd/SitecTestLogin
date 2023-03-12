@@ -7,6 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.log.LogFragment">
 
+    <com.google.android.material.chip.Chip
+        android:id="@+id/log_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/outfit_medium"
+        android:text="@string/mvp"
+        app:chipCornerRadius="20dp"
+        app:chipIcon="@drawable/info_sign"
+        app:chipStrokeColor="@color/text_color_hint"
+        app:chipStrokeWidth="1dp"
+        app:chipSurfaceColor="@color/white"
+        app:iconStartPadding="2dp"
+        app:layout_constraintEnd_toStartOf="@+id/gl_root_right"
+        app:layout_constraintTop_toTopOf="@+id/gl_root_top" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/log_rv"
         android:layout_width="0dp"

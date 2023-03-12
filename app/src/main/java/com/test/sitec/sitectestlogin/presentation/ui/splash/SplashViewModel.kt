@@ -18,17 +18,23 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
     @Inject
     lateinit var baseUseCases: BaseUseCases
-    private val liveData: MutableLiveData<SplashLiveData> = MutableLiveData<SplashLiveData>()
 
     @Inject
     lateinit var sharedLiveData: MutableLiveData<ArrayList<User>>
     private var job: Job? = null
+    private val liveData: MutableLiveData<SplashLiveData> = MutableLiveData<SplashLiveData>()
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, e ->
+        e.printStackTrace()
+        liveData.postValue(
+            SplashLiveData.Error(ERROR_GENERAL_TEXT)
+        )
+    }
 
     fun getLiveData() = liveData
 
     fun getUsers() {
         if (App.instance.isConnected) {
-            job = CoroutineScope(Dispatchers.IO).launch {
+            job = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler).launch {
 
                 val response = baseUseCases.getUsers()
 
@@ -63,6 +69,4 @@ class SplashViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
             )
         }
     }
-
-
 }

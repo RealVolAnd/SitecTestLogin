@@ -11,6 +11,24 @@
         tools:context=".presentation.ui.signin.SignInFragment">
 
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/signin_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:elevation="@dimen/elevation_bigest"
+            android:fontFamily="@font/outfit_medium"
+            android:text="@string/mvvm"
+            app:chipCornerRadius="20dp"
+            app:chipIcon="@drawable/info_sign"
+            app:chipStrokeColor="@color/text_color_hint"
+            app:chipStrokeWidth="1dp"
+            app:chipSurfaceColor="@color/white"
+            app:iconStartPadding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_root_top" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sign_in_container"
             android:layout_width="match_parent"

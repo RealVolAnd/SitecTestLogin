@@ -26,13 +26,19 @@ class SignInViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
     lateinit var sharedLiveData: MutableLiveData<ArrayList<User>>
     private val liveData: MutableLiveData<SignInLiveData> = MutableLiveData()
     private var job: Job? = null
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, e ->
+        e.printStackTrace()
+        liveData.postValue(
+            SignInLiveData.Error(ERROR_GENERAL_TEXT)
+        )
+    }
 
     fun getUsersListLiveData() = sharedLiveData
     fun getLiveData() = liveData
 
     fun signIn(signInRequest: RequestSignIn) {
         if (App.instance.isConnected) {
-            job = CoroutineScope(Dispatchers.IO).launch {
+            job = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler).launch {
 
                 val response = baseUseCases.signIn(signInRequest)
 

@@ -143,7 +143,6 @@ class SignInFragment : BaseFragment() {
                         showLoginErrorDialog()
                         insertErrorItemToTheLog()
                     }
-
                     else -> {
                         insertSuccessItemToTheLog()
                         goToLogScreen()
